@@ -1,0 +1,62 @@
+<html ng-app="windowExample">
+
+<head>
+    <title>Angular JS add and remove</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+</head>
+<body ng-controller="MainCtrl">
+<h1>
+  Hello Lista
+</h1>
+<div>
+
+    Nome: <input type="text" ng-model="nome"><br> Cognome: <input type="text" ng-model="cognome"><br>
+    <br>
+<input type="text" ng-model="test">
+    <button ng-click="aggiungiContatti()">
+            Salva
+    </button>
+
+    <div ng-repeat="persone in list">
+
+      <table>
+          <tr>
+              <td>
+                  <span ng-bind="persone.nome"></span></p>
+              </td>
+              <td>
+                  <span ng-bind="persone.cognome"></span></p>
+              </td>
+
+          </tr>
+      </table>
+      <div>
+</div>
+</body>
+
+<script>
+  var modulo = angular.module('windowExample',[])
+modulo.service('Service',function(){
+  this.add=function($scope){
+    $scope.list=[];
+    $scope.list.push({
+
+      nome: $scope.nome,
+      cognome: $scope.cognome
+
+    })
+  }
+})
+
+  modulo.controller('MainCtrl' ,['$scope','Service',function($scope,Service){
+
+    $scope.aggiungiContatti = function(){
+      Service.add($scope);
+    }
+  }]);
+
+
+
+</script>
+
+</html>

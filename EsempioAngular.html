@@ -10,7 +10,7 @@
 /*
 Definisco un controller, che verrà chiamato dalla view.
 */
-  angular.module('windowExample', [])
+  var modulo = angular.module('windowExample', [])
     .controller('ExampleController', ['$scope', '$window','ExampleService', function($scope, $window,ExampleService) {
       $scope.greeting = 'Hello, World!';
       $scope.doGreeting = function(greeting) {
@@ -20,7 +20,7 @@ Definisco un controller, che verrà chiamato dalla view.
     /*
     Definisco un Service, che verrà chiamato dal controller.
     */
-  angular.module('windowExample').service('ExampleService', ['$window' , function($window){
+  modulo.service('ExampleService', ['$window' , function($window){
       this.alert = function(greeting,$window){
         return $window.alert(greeting);
       };
