@@ -7,7 +7,9 @@
 </script>
 <script>
 
-// In questo modo effettuo una chiamata al SERVICE
+/*
+Definisco un controller, che verrà chiamato dalla view.
+*/
   angular.module('windowExample', [])
     .controller('ExampleController', ['$scope', '$window','ExampleService', function($scope, $window,ExampleService) {
       $scope.greeting = 'Hello, World!';
@@ -15,7 +17,9 @@
         ExampleService.alert(greeting,$window);
       };
     }]);
-
+    /*
+    Definisco un Service, che verrà chiamato dal controller.
+    */
   angular.module('windowExample').service('ExampleService', ['$window' , function($window){
       this.alert = function(greeting,$window){
         return $window.alert(greeting);
